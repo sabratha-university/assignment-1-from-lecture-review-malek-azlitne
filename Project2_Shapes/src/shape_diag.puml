@@ -1,0 +1,42 @@
+@startuml
+
+' تعريف الواجهة Movable
+interface Movable {
+    + moveUp(): void
+    + moveDown(): void
+    + moveLeft(): void
+    + moveRight(): void
+}
+
+' تعريف الواجهة Adjustable
+interface Adjustable {
+    + resize(factor: double): void
+    + rotate(angle: double): void
+}
+
+' تعريف الكلاس المجرد Shape
+abstract class Shape {
+    + x: int
+    + y: int
+    + draw(): void
+    + move(dx: int, dy: int): void
+}
+
+' تعريف الكلاس Circle
+class Circle {
+    + radius: double
+    + draw(): void
+    + resize(factor: double): void
+    + rotate(angle: double): void
+    + moveUp(): void
+    + moveDown(): void
+    + moveLeft(): void
+    + moveRight(): void
+}
+
+' العلاقات
+Shape <|-- Circle
+Circle ..|> Movable
+Circle ..|> Adjustable
+
+@enduml

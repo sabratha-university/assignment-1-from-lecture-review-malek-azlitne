@@ -1,23 +1,43 @@
 public class Circle extends Shape implements Movable, Adjustable {
     private double radius;
-    public Circle(String name, double radius) {
-        super(name);
+
+    public Circle(int x, int y, double radius) {
+        super(x, y);
         this.radius = radius;
     }
 
     @Override
     public void draw() {
-        System.out.println("Drawing a circle with radius " + radius);
+        System.out.println("Drawing a circle at (" + x + ", " + y + ") with radius " + radius);
     }
 
     @Override
-    public void move() {
-        System.out.println(name + " moved to new position.");
+    public void moveUp() {
+        y -= 1;
+    }
+
+    @Override
+    public void moveDown() {
+        y += 1;
+    }
+
+    @Override
+    public void moveLeft() {
+        x -= 1;
+    }
+
+    @Override
+    public void moveRight() {
+        x += 1;
     }
 
     @Override
     public void resize(double factor) {
         radius *= factor;
-        System.out.println(name + " resized to new radius: " + radius);
+    }
+
+    @Override
+    public void rotate(double angle) {
+        System.out.println("Rotating circle by " + angle + " degrees");
     }
 }
